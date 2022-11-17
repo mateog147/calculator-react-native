@@ -1,10 +1,22 @@
 import React from 'react';
-import {View, Text, SafeAreaView, StyleSheet, Pressable} from 'react-native';
+import {ButtonCal} from './src/components/ButtonCal';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  Pressable,
+  StatusBar,
+} from 'react-native';
 
 export const App = () => {
+  const debug = () => {
+    console.log('holavoy aca');
+  };
   return (
     //Safe deja un margin es especialmente buneo en IOS
     <SafeAreaView style={styles.main}>
+      <StatusBar backgroundColor={'black'} />
       <Text style={styles.operationsText}>0</Text>
       <Text style={styles.resultText}>0</Text>
       <View style={styles.btnContainer}>
@@ -25,9 +37,7 @@ export const App = () => {
 
           <View style={styles.numberBtnsContainer}>
             {[7, 8, 9, 4, 5, 6, 1, 2, 3].map(number => (
-              <Pressable style={styles.btn}>
-                <Text style={styles.btnText}>{number}</Text>
-              </Pressable>
+              <ButtonCal text={number.toString()} />
             ))}
           </View>
 
@@ -36,7 +46,7 @@ export const App = () => {
               <Text style={styles.btnText}>0</Text>
             </Pressable>
 
-            <Pressable style={styles.btn}>
+            <Pressable onPress={() => debug()} style={styles.btn}>
               <Text style={styles.btnText}>.</Text>
             </Pressable>
           </View>
