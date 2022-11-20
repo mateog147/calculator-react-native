@@ -49,32 +49,4 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  btn: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 50,
-    width: 80,
-    height: 80,
-    margin: 5,
-    backgroundColor: '#2d2d2d',
-  },
-  opBtn: {
-    backgroundColor: '#ff9426',
-  },
-  ctrBtn: {
-    backgroundColor: '#9b9b9b',
-    color: 'black',
-  },
-  btnText: {
-    fontSize: 35,
-    color: 'white',
-    fontWeight: 'bold',
-    textAlignVertical: 'center',
-  },
-  ctrBtnText: {
-    color: 'black',
-  },
-  wideBtn: {
-    width: 160,
-  },
 });

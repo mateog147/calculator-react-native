@@ -4,12 +4,13 @@ import React from 'react';
 interface Props {
   text: string;
   type?: string;
+  action?: (textNumber: string) => void;
 }
-export const ButtonCal = ({text, type}: Props) => {
+export const ButtonCal = ({text, type, action}: Props) => {
   return (
     <TouchableOpacity
       style={getBtnStyles(type)}
-      onPress={() => console.log({text})}>
+      onPress={() => (action ? action(text) : console.log({text}))}>
       <Text style={getTextStyles(type)}>{text}</Text>
     </TouchableOpacity>
   );
