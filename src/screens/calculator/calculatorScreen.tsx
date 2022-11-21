@@ -17,7 +17,6 @@ export const CalculatorScreen = () => {
     number,
   } = useCalculatorLogic();
   return (
-    //Safe deja un margin es especialmente buneo en IOS
     <View>
       <Text style={styles.operationsText}>{previousNumber}</Text>
       <Text style={styles.resultText}>{number}</Text>

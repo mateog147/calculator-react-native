@@ -5,15 +5,10 @@ export const useCalculatorLogic = () => {
   const [number, setNumber] = useState('0');
   const [operation, setOperation] = useState('');
 
-  const clean = () => {
-    setNumber('0');
-    setPreviousNumber('0');
-  };
-
   const assignOperation = (operaMath: string) => {
     if (number === '0') {
-      setPreviousNumber(previousNumber.replace(/( [+-×÷])$/, ' ' + operaMath));
-    } else if (previousNumber.match(/( [\+\-\×\÷])$/)) {
+      setPreviousNumber(previousNumber.replace(/( [+-x÷])$/, ' ' + operaMath));
+    } else if (previousNumber.match(/( [\+\-\x\÷])$/)) {
       const data = previousNumber.split(' ');
       console.log(data);
       // eslint-disable-next-line no-eval
@@ -35,18 +30,15 @@ export const useCalculatorLogic = () => {
       switch (numberTexto) {
         case '0':
           if (number !== '0' && number !== '-0') {
-            console.log('0', numberTexto);
             setNumber(number + numberTexto);
           }
           break;
         case '·':
-          console.log('·', numberTexto);
           if (!number.includes('.')) {
             setNumber(number + numberTexto);
           }
           break;
         default:
-          console.log('default', numberTexto);
           if (number === '-0') {
             setNumber('-' + numberTexto);
           } else {
@@ -56,6 +48,11 @@ export const useCalculatorLogic = () => {
           }
       }
     }
+  };
+
+  const clean = () => {
+    setNumber('0');
+    setPreviousNumber('0');
   };
 
   const positiveNegativeChange = () => {
@@ -97,8 +94,9 @@ export const useCalculatorLogic = () => {
       !number.includes('= ') &&
       previousNumber !== '0'
     ) {
-      const number1 = Number(previousNumber.replace(/( [+-×÷])$/, ''));
+      const number1 = Number(previousNumber.replace(/( [+-x÷])$/, ''));
       setPreviousNumber(previousNumber + ' ' + number);
+      console.log('number :>> ', number);
       switch (operation) {
         case '+':
           setNumber('= ' + (number1 + Number(number)).toString());
@@ -106,14 +104,14 @@ export const useCalculatorLogic = () => {
         case '-':
           setNumber('= ' + (number1 - Number(number)).toString());
           break;
-        case '×':
+        case 'x':
           setNumber('= ' + (number1 * Number(number)).toString());
           break;
         case '÷':
           if (Number(number) !== 0) {
             setNumber('= ' + (number1 / Number(number)).toString());
           } else {
-            setNumber('= La división por cero no existe');
+            setNumber('Cant´t divide by 0');
           }
           break;
       }
